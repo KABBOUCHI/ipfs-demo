@@ -1,12 +1,28 @@
 import { create } from 'ipfs-core'
+import { libp2pConfig } from 'ipfs-core-config/libp2p'
 import WebRTCStar from 'libp2p-webrtc-star'
 import wrtc from 'wrtc'
 import prompt from 'prompt'
+import defu from 'defu'
 
 prompt.message = '';
 prompt.delimiter = '';
 
 const app = async () => {
+
+    const libp2p = defu(libp2pConfig(), {
+        modules: {
+            transport: [WebRTCStar],
+        },
+        config: {
+            transport: {
+                [WebRTCStar.prototype[Symbol.toStringTag]]: {
+                    wrtc
+                }
+            }
+        }
+    })
+    
     const node = await create({
         repo: '.repo/demo-' + Date.now(),
         silent: true,
@@ -20,25 +36,8 @@ const app = async () => {
                     '/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star/'
                 ]
             },
-            Bootstrap: [
-                "/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
-                "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
-                // '/dns6/ipfs.thedisco.zone/tcp/4430/wss/p2p/12D3KooWChhhfGdB9GJy1GbhghAAKCUR99oCymMEVS4eUcEy67nt',
-                // '/dns4/ipfs.thedisco.zone/tcp/4430/wss/p2p/12D3KooWChhhfGdB9GJy1GbhghAAKCUR99oCymMEVS4eUcEy67nt'
-            ],
         },
-        libp2p: {
-            modules: {
-                transport: [ WebRTCStar],
-            },
-            config: {
-                transport: {
-                    [WebRTCStar.prototype[Symbol.toStringTag]]: {
-                        wrtc
-                    }
-                }
-            }
-        }
+        libp2p
     })
 
     const { username } = await prompt.get({
