@@ -79,7 +79,18 @@ const app = async () => {
                 "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa"
             ]
         },
-        libp2p: libp2pBundle
+        libp2p: {
+            modules: {
+                transport: [WebrtcStar],
+            },
+            config: {
+                transport: {
+                    [WebrtcStar.prototype[Symbol.toStringTag]]: {
+                        wrtc
+                    }
+                },
+            }
+        }
     })
 
     const { username } = await prompt.get({
