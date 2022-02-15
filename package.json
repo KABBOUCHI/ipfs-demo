@@ -8,9 +8,12 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "@achingbrain/libp2p-gossipsub": "^0.12.2",
     "defu": "^5.0.1",
     "ipfs-core": "^0.14.1",
     "ipfs-core-config": "^0.3.1",
+    "libp2p-noise": "^4.0.0",
+    "libp2p-secio": "^0.13.1",
     "libp2p-webrtc-star": "^0.25.0",
     "prompt": "^1.2.1",
     "wrtc": "^0.4.7"

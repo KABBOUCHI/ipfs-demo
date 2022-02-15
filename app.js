@@ -1,27 +1,64 @@
 import { create } from 'ipfs-core'
-import { libp2pConfig } from 'ipfs-core-config/libp2p'
-import WebRTCStar from 'libp2p-webrtc-star'
+import Libp2p from "libp2p"
+import TCP from "libp2p-tcp"
+import Websockets from 'libp2p-websockets'
+import Mplex from "libp2p-mplex"
+import { NOISE } from "libp2p-noise"
+import Secio from "libp2p-secio"
+import MDNS from "libp2p-mdns"
+import Bootstrap from 'libp2p-bootstrap'
+import Gossipsub from '@achingbrain/libp2p-gossipsub'
+import WebrtcStar from 'libp2p-webrtc-star'
+import KadDHT from 'libp2p-kad-dht'
 import wrtc from 'wrtc'
 import prompt from 'prompt'
-import defu from 'defu'
 
 prompt.message = '';
 prompt.delimiter = '';
 
-const app = async () => {
+const libp2pBundle = (opts) => {
+    // Set convenience variables to clearly showcase some of the useful things that are available
+    const peerId = opts.peerId
+    const bootstrapList = opts.config.Bootstrap
+    const addressesList = opts.config.Addresses.Swarm;
 
-    const libp2p = defu(libp2pConfig(), {
+    // Build and return our libp2p node
+    // n.b. for full configuration options, see https://github.com/libp2p/js-libp2p/blob/master/doc/CONFIGURATION.md
+    return Libp2p.create({
+        peerId,
+        addresses: {
+            listen: addressesList
+        },
         modules: {
-            transport: [WebRTCStar],
+            transport: [WebrtcStar, TCP, Websockets],
+            streamMuxer: [Mplex],
+            connEncryption: [NOISE],
+            peerDiscovery: [MDNS, Bootstrap],
+            pubsub: Gossipsub
         },
         config: {
             transport: {
-                [WebRTCStar.prototype[Symbol.toStringTag]]: {
+                [WebrtcStar.prototype[Symbol.toStringTag]]: {
                     wrtc
+                }
+            },
+            peerDiscovery: {
+                autoDial: true, // Auto connect to discovered peers (limited by ConnectionManager minConnections)
+                // The `tag` property will be searched when creating the instance of your Peer Discovery service.
+                // The associated object, will be passed to the service when it is instantiated.
+                [Bootstrap.tag]: {
+                    enabled: true,
+                    list: bootstrapList
+                },
+                [MDNS.tag]: {
+                    enabled: true,
                 }
             }
         }
     })
+}
+
+const app = async () => {
 
     const node = await create({
         repo: '.repo/demo-' + Date.now(),
@@ -36,8 +73,13 @@ const app = async () => {
                     '/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star/'
                 ]
             },
+
+            Bootstrap: [
+                "/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
+                "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa"
+            ]
         },
-        libp2p
+        libp2p: libp2pBundle
     })
 
     const { username } = await prompt.get({
