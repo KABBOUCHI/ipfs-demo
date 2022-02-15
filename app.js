@@ -22,6 +22,10 @@ const app = async () => {
             }
         }
     })
+
+    console.dir(libp2p, {
+        depth: null,
+    })
     
     const node = await create({
         repo: '.repo/demo-' + Date.now(),
@@ -33,7 +37,7 @@ const app = async () => {
                     '/ip4/0.0.0.0/tcp/0',
                     '/ip4/0.0.0.0/tcp/0/ws',
                     '/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star/',
-                    '/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star/'
+                    // '/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star/'
                 ]
             },
         },
