@@ -29,7 +29,7 @@ const app = async () => {
     
     const node = await create({
         repo: '.repo/demo-' + Date.now(),
-        silent: true,
+        // silent: true,
 
         config: {
             Addresses: {
@@ -51,6 +51,7 @@ const app = async () => {
     });
 
     await node.pubsub.subscribe('message', (msg) => {
+        console.log(msg)
         if (!username) {
             return;
         }
