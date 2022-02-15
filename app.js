@@ -27,10 +27,6 @@ const app = async () => {
         }
     })
 
-    prompt.start({
-        delimiter: null
-    })
-
     const { username } = await prompt.get({
         name: 'username',
         description: 'Enter your username:',
