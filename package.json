@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "ipfs-core": "^0.14.1",
-    "prompt": "^1.2.1"
+    "libp2p-webrtc-star": "^0.25.0",
+    "prompt": "^1.2.1",
+    "wrtc": "^0.4.7"
   }
 }
