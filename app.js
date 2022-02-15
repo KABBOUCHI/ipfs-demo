@@ -15,15 +15,17 @@ const app = async () => {
                     '/ip4/0.0.0.0/tcp/0',
                     '/ip4/0.0.0.0/tcp/0/ws',
                     '/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star/',
-                    '/dns4/star.thedisco.zone/tcp/9090/wss/p2p-webrtc-star',
-                    '/dns6/star.thedisco.zone/tcp/9090/wss/p2p-webrtc-star',
+                    // '/dns4/star.thedisco.zone/tcp/9090/wss/p2p-webrtc-star',
+                    // '/dns6/star.thedisco.zone/tcp/9090/wss/p2p-webrtc-star',
                 ]
             },
 
-            Bootstrap: [
-                '/dns6/ipfs.thedisco.zone/tcp/4430/wss/p2p/12D3KooWChhhfGdB9GJy1GbhghAAKCUR99oCymMEVS4eUcEy67nt',
-                '/dns4/ipfs.thedisco.zone/tcp/4430/wss/p2p/12D3KooWChhhfGdB9GJy1GbhghAAKCUR99oCymMEVS4eUcEy67nt'
-            ]
+            // Bootstrap: [
+            //     "/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
+            //     "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
+            //     '/dns6/ipfs.thedisco.zone/tcp/4430/wss/p2p/12D3KooWChhhfGdB9GJy1GbhghAAKCUR99oCymMEVS4eUcEy67nt',
+            //     '/dns4/ipfs.thedisco.zone/tcp/4430/wss/p2p/12D3KooWChhhfGdB9GJy1GbhghAAKCUR99oCymMEVS4eUcEy67nt'
+            // ]
         }
     })
 
