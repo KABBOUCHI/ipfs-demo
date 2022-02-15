@@ -23,10 +23,6 @@ const app = async () => {
         }
     })
 
-    console.dir(libp2p, {
-        depth: null,
-    })
-    
     const node = await create({
         repo: '.repo/demo-' + Date.now(),
         silent: true,
