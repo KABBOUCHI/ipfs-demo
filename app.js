@@ -7,7 +7,7 @@ prompt.delimiter = '';
 const app = async () => {
     const node = await create({
         repo: '.repo/demo-' + Date.now(),
-        silent: true,
+        // silent: true,
 
         config: {
             Addresses: {
@@ -50,7 +50,7 @@ const app = async () => {
             return;
         }
 
-        console.log(`\n> ${decoded.from} says: ${decoded.message}`);
+        console.log(`> ${decoded.from} says: ${decoded.message}`);
     })
 
 
