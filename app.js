@@ -25,7 +25,11 @@ const app = async () => {
                 "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
                 // '/dns6/ipfs.thedisco.zone/tcp/4430/wss/p2p/12D3KooWChhhfGdB9GJy1GbhghAAKCUR99oCymMEVS4eUcEy67nt',
                 // '/dns4/ipfs.thedisco.zone/tcp/4430/wss/p2p/12D3KooWChhhfGdB9GJy1GbhghAAKCUR99oCymMEVS4eUcEy67nt'
-            ]
+            ],
+
+            Swarm: {
+                EnableRelayHop: true
+            }
         }
     })
 
@@ -35,7 +39,7 @@ const app = async () => {
         required: true,
     });
 
-    node.pubsub.subscribe('message', (msg) => {
+    await node.pubsub.subscribe('message', (msg) => {
         if(! username){
             return;
         }
