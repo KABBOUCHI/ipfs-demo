@@ -47,12 +47,12 @@ const libp2pBundle = (opts) => {
                 // The `tag` property will be searched when creating the instance of your Peer Discovery service.
                 // The associated object, will be passed to the service when it is instantiated.
                 [Bootstrap.tag]: {
-                    interval: 10000,
+                    interval: 1000,
                     enabled: true,
                     list: bootstrapList
                 },
                 [MDNS.tag]: {
-                    interval: 10000,
+                    interval: 5000,
                     enabled: true,
                 }
             }
