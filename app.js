@@ -23,6 +23,7 @@ const app = async () => {
             ]
         },
         Swarm: {
+            EnableAutoRelay : true,,
             AutoRelay: {
                 Enabled: true,
             },
