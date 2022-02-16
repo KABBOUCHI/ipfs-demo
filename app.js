@@ -72,10 +72,11 @@ const app = async () => {
         libp2p: {
             config: {
                 dht: {
-                    enabled: true
-                }
-            }
-        }
+                    enabled: true,
+                    clientMode: true,
+                },
+            },
+        },
         // config: {
         //     Addresses: {
         //         Swarm: [
