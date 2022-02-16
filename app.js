@@ -1,16 +1,4 @@
 import { create } from 'ipfs-core'
-import Libp2p from "libp2p"
-import TCP from "libp2p-tcp"
-import Websockets from 'libp2p-websockets'
-import Mplex from "libp2p-mplex"
-import { NOISE } from "libp2p-noise"
-import Secio from "libp2p-secio"
-import MDNS from "libp2p-mdns"
-import Bootstrap from 'libp2p-bootstrap'
-import Gossipsub from '@achingbrain/libp2p-gossipsub'
-import WebrtcStar from 'libp2p-webrtc-star'
-import KadDHT from 'libp2p-kad-dht'
-import wrtc from 'wrtc'
 import prompt from 'prompt'
 
 prompt.message = '';
@@ -34,6 +22,17 @@ const app = async () => {
                 '/ip4/95.179.131.73/tcp/8001/p2p/Qma3Ma763RzXvJzrcfEmqf25QED3rGyKLirVKWvg5Z6pTA',
             ]
         },
+        libp2p: {
+            config: {
+                relay: {
+                    enabled: true,
+                    autoRelay: {
+                        enabled: true,
+                        maxListeners: 5
+                    }
+                }
+            }
+        }
     })
 
     const { username } = await prompt.get({
