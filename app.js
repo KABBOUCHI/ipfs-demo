@@ -9,6 +9,12 @@ const app = async () => {
     const node = await create({
         repo: '.repo/demo-' + Date.now(),
         silent: false,
+        relay: {
+            enabled: true, // enable relay dialer/listener (STOP)
+            hop: {
+                enabled: true // make this node a relay (HOP)
+            }
+        },
         config: {
             Addresses: {
                 Swarm: [
@@ -22,17 +28,6 @@ const app = async () => {
                 '/ip4/95.179.131.73/tcp/8001/p2p/Qma3Ma763RzXvJzrcfEmqf25QED3rGyKLirVKWvg5Z6pTA',
             ]
         },
-        Swarm: {
-            EnableAutoRelay : true,
-            AutoRelay: {
-                Enabled: true,
-            },
-        },
-        Discovery: {
-            MDNS: {
-                Enabled: true,
-            },
-        }
     })
 
     const { username } = await prompt.get({
