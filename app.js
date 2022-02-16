@@ -69,6 +69,13 @@ const app = async () => {
         repo: '.repo/demo-' + Date.now(),
         silent: false,
 
+        libp2p: {
+            config: {
+                dht: {
+                    enabled: true
+                }
+            }
+        }
         // config: {
         //     Addresses: {
         //         Swarm: [
