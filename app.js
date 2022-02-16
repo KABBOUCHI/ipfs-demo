@@ -12,7 +12,8 @@ const app = async () => {
         relay: {
             enabled: true, // enable relay dialer/listener (STOP)
             hop: {
-                enabled: true // make this node a relay (HOP)
+                enabled: true, // make this node a relay (HOP)
+                active: true // make this node an active relay (HOP)
             }
         },
         config: {
