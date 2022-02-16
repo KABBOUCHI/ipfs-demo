@@ -74,17 +74,21 @@ const app = async () => {
                 Swarm: [
                     '/ip4/0.0.0.0/tcp/0',
                     '/ip4/0.0.0.0/tcp/0/ws',
-                    '/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star/',
-                    '/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star/'
+                    // '/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star/',
+                    // '/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star/',
+                    // "/ip4/139.59.13.29/tcp/45000/p2p/QmXSqzWcyFCN7DrHxeouXL9M79PD8fCsxR4PZVsXaFUzdj",
+                    // '/ip4/95.179.131.73/tcp/15002/ws/p2p/QmfAFkE2LqwHSsHnGvquiz1NwjGeLRKFU4tShA5iMtb93m',
+                    // '/ip4/95.179.131.73/tcp/8001/p2p/QmfAFkE2LqwHSsHnGvquiz1NwjGeLRKFU4tShA5iMtb93m'
                 ]
             },
 
             Bootstrap: [
-                "/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
-                "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa"
+                "/ip4/139.59.13.29/tcp/45000/p2p/QmXSqzWcyFCN7DrHxeouXL9M79PD8fCsxR4PZVsXaFUzdj",
+                // "/dnsaddr/bootstrap.libp2p.io/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN",
+                // "/dnsaddr/bootstrap.libp2p.io/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa"
             ]
         },
-        libp2p: libp2pBundle
+        // libp2p: libp2pBundle
     })
 
     const { username } = await prompt.get({
