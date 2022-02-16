@@ -74,7 +74,7 @@ const app = async () => {
                 Swarm: [
                     '/ip4/0.0.0.0/tcp/0',
                     '/ip4/0.0.0.0/tcp/0/ws',
-                    '/ip4/95.179.131.73/tcp/36931/ws/p2p/Qmc94Xf8LHDmDb2GfXedjowi7EpuW7ED4s8tMjSzfXsbep',
+                    '/ip4/95.179.131.73/tcp/34899/ws/p2p/QmecXRL5TNy957ugBCRbTmhQxS6G4ZcyymsHvD3qHXj5w9',
                     // '/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star/',
                     // '/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star/',
                     // "/ip4/139.59.13.29/tcp/45000/p2p/QmXSqzWcyFCN7DrHxeouXL9M79PD8fCsxR4PZVsXaFUzdj",
