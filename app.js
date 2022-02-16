@@ -22,16 +22,15 @@ const app = async () => {
                 '/ip4/95.179.131.73/tcp/8001/p2p/Qma3Ma763RzXvJzrcfEmqf25QED3rGyKLirVKWvg5Z6pTA',
             ]
         },
-        libp2p: {
-            config: {
-                relay: {
-                    enabled: true,
-                    autoRelay: {
-                        enabled: true,
-                        maxListeners: 5
-                    }
-                }
-            }
+        Swarm: {
+            AutoRelay: {
+                Enabled: true,
+            },
+        },
+        Discovery: {
+            MDNS: {
+                Enabled: true,
+            },
         }
     })
 
