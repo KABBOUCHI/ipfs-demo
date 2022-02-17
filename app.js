@@ -2,7 +2,6 @@ import { create } from 'ipfs-core'
 import prompt from 'prompt'
 
 import MulticastDNS from 'libp2p-mdns'
-import KadDHT from 'libp2p-kad-dht'
 import Bootstrap from 'libp2p-bootstrap'
 import PubsubPeerDiscovery from 'libp2p-pubsub-peer-discovery'
 prompt.message = '';
@@ -22,12 +21,6 @@ const app = async () => {
         },
 
         libp2p: {
-            modules: {
-                peerDiscovery: [
-                    MulticastDNS, 
-                    Bootstrap, 
-                ],
-            },
             config: {
                 peerDiscovery: {
                     autoDial: true, // Auto connect to discovered peers (limited by ConnectionManager minConnections)
@@ -44,6 +37,10 @@ const app = async () => {
                     [MulticastDNS.tag]: {
                         interval: 20e3,
                         enabled: true,
+                    },
+                    [PubsubPeerDiscovery.tag]: {
+                        interval: 1000,
+                        enabled: true
                     },
                 },
                 relay: {
