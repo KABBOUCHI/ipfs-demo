@@ -990,6 +990,11 @@ elliptic@^6.5.4:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
+emittery@^0.7.1:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.7.2.tgz#25595908e13af0f5674ab419396e2fb394cdfa82"
+  integrity sha512-A8OG5SR/ij3SsJdWDJdkkSYUjQdCUx6APQXem0SaEePBSRg4eymGYwBkKo1Y6DU+af/Jn2dBQqDBvjnr9Vi8nQ==
+
 emoji-regex@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-8.0.0.tgz#e818fd69ce5ccfcb404594f842963bf53164cc37"
@@ -2657,6 +2662,17 @@ libp2p-noise@^4.0.0:
     protobufjs "^6.10.1"
     uint8arrays "^2.0.5"
 
+libp2p-pubsub-peer-discovery@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/libp2p-pubsub-peer-discovery/-/libp2p-pubsub-peer-discovery-4.0.0.tgz#2539b19c25e2f56ba55be6da62dccc1acd10b2b9"
+  integrity sha512-5CCS4C0UILIksXxUCTYN0iOnuevVS6lb+WDBbLYQVpmpb2VYAkLnK/+Y1VXVxf1S4UQ9NU4KIjV4gtIsUDPHBA==
+  dependencies:
+    debug "^4.3.1"
+    emittery "^0.7.1"
+    multiaddr "^9.0.1"
+    peer-id "^0.14.8"
+    protobufjs "^6.11.2"
+
 libp2p-record@^0.10.3, libp2p-record@^0.10.4:
   version "0.10.6"
   resolved "https://registry.yarnpkg.com/libp2p-record/-/libp2p-record-0.10.6.tgz#ba2dacc474f162132bab1b4024c8a27e153c6758"
@@ -3510,7 +3526,7 @@ pathval@^1.1.1:
   resolved "https://registry.yarnpkg.com/pathval/-/pathval-1.1.1.tgz#8534e77a77ce7ac5a2512ea21e0fdb8fcf6c3d8d"
   integrity sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==
 
-peer-id@^0.14.0:
+peer-id@^0.14.0, peer-id@^0.14.8:
   version "0.14.8"
   resolved "https://registry.yarnpkg.com/peer-id/-/peer-id-0.14.8.tgz#667c6bedc8ab313c81376f6aca0baa2140266fab"
   integrity sha512-GpuLpob/9FrEFvyZrKKsISEkaBYsON2u0WtiawLHj1ii6ewkoeRiSDFLyIefYhw0jGvQoeoZS05jaT52X7Bvig==

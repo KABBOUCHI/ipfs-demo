@@ -1,6 +1,10 @@
 import { create } from 'ipfs-core'
 import prompt from 'prompt'
 
+import MulticastDNS from 'libp2p-mdns'
+import KadDHT from 'libp2p-kad-dht'
+import Bootstrap from 'libp2p-bootstrap'
+import PubsubPeerDiscovery from 'libp2p-pubsub-peer-discovery'
 prompt.message = '';
 prompt.delimiter = '';
 
@@ -31,7 +35,39 @@ const app = async () => {
         },
 
         libp2p: {
+            modules: {
+                peerDiscovery: [
+                    MulticastDNS, 
+                    Bootstrap, 
+                    PubsubPeerDiscovery
+                ],
+            },
             config: {
+                peerDiscovery: {
+                    autoDial: true, // Auto connect to discovered peers (limited by ConnectionManager minConnections)
+                    // The `tag` property will be searched when creating the instance of your Peer Discovery service.
+                    // The associated object, will be passed to the service when it is instantiated.
+                    [Bootstrap.tag]: {
+                        enabled: true,
+                        interval: 60e3,
+                        list: [
+                            '/ip4/95.179.131.73/tcp/15002/ws/p2p/QmeBFMQJUkv5wkSCWY4cgvuKZtQ5rCAZyvKpe5dARVGmwL',
+                            '/ip4/95.179.131.73/tcp/8001/p2p/QmeBFMQJUkv5wkSCWY4cgvuKZtQ5rCAZyvKpe5dARVGmwL',
+                        ] // provide array of multiaddrs
+                    },
+                    [MulticastDNS.tag]: {
+                        interval: 20e3,
+                        enabled: true,
+                    },
+                    [PubsubPeerDiscovery.tag]: {
+                        interval: 1000,
+                        enabled: true
+                    },
+                },
+                dht: {
+                    enabled: true,
+                    clientMode: true,
+                },
                 relay: {
                     enabled: true,
                     autoRelay: {
@@ -40,7 +76,7 @@ const app = async () => {
                     }
                 }
             }
-        }
+        },
     })
 
     const { username } = await prompt.get({
