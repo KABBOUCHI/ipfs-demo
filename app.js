@@ -26,7 +26,6 @@ const app = async () => {
                 peerDiscovery: [
                     MulticastDNS, 
                     Bootstrap, 
-                    PubsubPeerDiscovery
                 ],
             },
             config: {
@@ -45,10 +44,6 @@ const app = async () => {
                     [MulticastDNS.tag]: {
                         interval: 20e3,
                         enabled: true,
-                    },
-                    [PubsubPeerDiscovery.tag]: {
-                        interval: 1000,
-                        enabled: true
                     },
                 },
                 relay: {
