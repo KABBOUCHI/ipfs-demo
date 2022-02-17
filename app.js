@@ -21,6 +21,13 @@ const app = async () => {
         },
 
         libp2p: {
+            modules: {
+                peerDiscovery: [
+                    MulticastDNS, 
+                    Bootstrap, 
+                    PubsubPeerDiscovery
+                ],
+            },
             config: {
                 peerDiscovery: {
                     autoDial: true, // Auto connect to discovered peers (limited by ConnectionManager minConnections)
