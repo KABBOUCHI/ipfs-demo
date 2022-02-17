@@ -51,10 +51,6 @@ const app = async () => {
                         enabled: true
                     },
                 },
-                dht: {
-                    enabled: true,
-                    clientMode: true,
-                },
                 relay: {
                     enabled: true,
                     autoRelay: {
