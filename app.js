@@ -14,7 +14,7 @@ const app = async () => {
             hop: {
                 enabled: true, // make this node a relay (HOP)
                 active: true // make this node an active relay (HOP)
-            }
+            },
         },
         config: {
             Addresses: {
@@ -25,10 +25,22 @@ const app = async () => {
             },
 
             Bootstrap: [
-                '/ip4/95.179.131.73/tcp/15002/ws/p2p/Qma3Ma763RzXvJzrcfEmqf25QED3rGyKLirVKWvg5Z6pTA',
-                '/ip4/95.179.131.73/tcp/8001/p2p/Qma3Ma763RzXvJzrcfEmqf25QED3rGyKLirVKWvg5Z6pTA',
-            ]
+                '/ip4/95.179.131.73/tcp/15002/ws/p2p/QmeBFMQJUkv5wkSCWY4cgvuKZtQ5rCAZyvKpe5dARVGmwL',
+                '/ip4/95.179.131.73/tcp/8001/p2p/QmeBFMQJUkv5wkSCWY4cgvuKZtQ5rCAZyvKpe5dARVGmwL',
+            ],
         },
+
+        libp2p: {
+            config: {
+                relay: {
+                    enabled: true,
+                    autoRelay: {
+                        enabled: true,
+                        maxListeners: 2
+                    }
+                }
+            }
+        }
     })
 
     const { username } = await prompt.get({
