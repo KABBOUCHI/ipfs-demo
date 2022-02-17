@@ -67,13 +67,6 @@ const app = async () => {
                 dht: {
                     enabled: true,
                     clientMode: true,
-                },
-                relay: {
-                    enabled: true,
-                    autoRelay: {
-                        enabled: true,
-                        maxListeners: 2
-                    }
                 }
             }
         },
