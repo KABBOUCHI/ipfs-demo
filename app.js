@@ -12,14 +12,6 @@ const app = async () => {
 
     const node = await create({
         repo: '.repo/demo-' + Date.now(),
-        silent: false,
-        relay: {
-            enabled: true, // enable relay dialer/listener (STOP)
-            hop: {
-                enabled: true, // make this node a relay (HOP)
-                active: true // make this node an active relay (HOP)
-            },
-        },
         config: {
             Addresses: {
                 Swarm: [
@@ -27,11 +19,6 @@ const app = async () => {
                     '/ip4/0.0.0.0/tcp/0/ws',
                 ],
             },
-
-            Bootstrap: [
-                '/ip4/95.179.131.73/tcp/15002/ws/p2p/QmeBFMQJUkv5wkSCWY4cgvuKZtQ5rCAZyvKpe5dARVGmwL',
-                '/ip4/95.179.131.73/tcp/8001/p2p/QmeBFMQJUkv5wkSCWY4cgvuKZtQ5rCAZyvKpe5dARVGmwL',
-            ],
         },
 
         libp2p: {
@@ -67,6 +54,13 @@ const app = async () => {
                 dht: {
                     enabled: true,
                     clientMode: true,
+                },
+                relay: {
+                    enabled: true,
+                    autoRelay: {
+                        enabled: true,
+                        maxListeners: 2
+                    }
                 }
             }
         },
